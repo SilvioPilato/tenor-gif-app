@@ -3,35 +3,50 @@
     import { API_LIMIT, GET_REQUEST_OPTIONS, TENOR_API_SEARCH, API_KEY, TENOR_API_FEATURED } from "./config";
     import GifGrid from "./lib/GifGrid.svelte";
     import Searchbar from "./lib/Searchbar.svelte";
-    import type { TenorResponse } from "./lib/types";
+    import type { TenorAPI, TenorResponse } from "./lib/types";
+    let currentSearch = "";
     let mediaformats = [];
-    onMount(async () => {
+    let nextId = "";
+    const searchGifs = async (api: TenorAPI, searchParams: URLSearchParams) => {
+        const response = await fetch(`${api}?${searchParams}`, GET_REQUEST_OPTIONS);
+        const result: TenorResponse = await response.json();
+        return result;
+    }
+    const onSearchbarSubmit = async (search: string) => { 
         try {
-            const searchParams = new URLSearchParams({
+            currentSearch = search;
+            const params = {
                 key: API_KEY,
                 limit: API_LIMIT.toString(),
-            });
-            const response = await fetch(`${TENOR_API_FEATURED}?${searchParams}`, GET_REQUEST_OPTIONS);
-            const result: TenorResponse = await response.json();
-            mediaformats = result.results.map((res)=> {
+                q: search,
+            }
+            const urlParams = new URLSearchParams(params);
+            const response = await searchGifs(TENOR_API_SEARCH, urlParams);
+            mediaformats = response.results.map((res)=> {
                 return res.media_formats;
             });
+            nextId = response.next;
         } catch (error) {
             console.error(error);
         }
-	});
-    const onSearchbarSubmit = async (search: string) => { 
+    }
+    const onIntersection = async () => {
         try {
-            const searchParams = new URLSearchParams({
+            const params = {
                 key: API_KEY,
-                q: search,
                 limit: API_LIMIT.toString(),
-            });
-            const response = await fetch(`${TENOR_API_SEARCH}?${searchParams}`, GET_REQUEST_OPTIONS);
-            const result: TenorResponse = await response.json();
-            mediaformats = result.results.map((res)=> {
+                ...(nextId) && {pos: nextId},
+                ...(currentSearch) && {q: currentSearch}
+            }
+            const endpoint = currentSearch ? TENOR_API_SEARCH: TENOR_API_FEATURED;
+            const urlParams = new URLSearchParams(params);
+            const response = await searchGifs(endpoint, urlParams);
+            const gifs = response.results.map((res)=> {
                 return res.media_formats;
             });
+            mediaformats = [...mediaformats, ...gifs];
+            console.log(mediaformats);
+            nextId = response.next;
         } catch (error) {
             console.error(error);
         }
@@ -42,12 +57,7 @@
     <div class="flex flex-col items-center">
         <div class="w-fit">
             <Searchbar onSearchbarSubmit={onSearchbarSubmit}/>
-            <GifGrid mediaFormats={mediaformats}/>
+            <GifGrid onIntersection={onIntersection} mediaFormats={mediaformats}/>
         </div>
     </div>
-
 </main>
-
-<style lang="postcss">
-   
-</style>

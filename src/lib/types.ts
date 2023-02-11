@@ -1,3 +1,5 @@
+import type { TENOR_API_FEATURED, TENOR_API_SEARCH } from "../config";
+
 export type TenorResponse = {
     locale: string,
     results: TenorResult[],
@@ -44,3 +46,7 @@ export type TenorMediaFormat = {
         size: number
     }
 }
+
+export type TenorAPI = 
+    typeof TENOR_API_FEATURED
+    | typeof TENOR_API_SEARCH;
