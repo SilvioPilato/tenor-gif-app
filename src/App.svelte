@@ -4,7 +4,6 @@
     import GifGrid from "./lib/GifGrid.svelte";
     import Searchbar from "./lib/Searchbar.svelte";
     import type { TenorResponse } from "./lib/types";
-    import {featured} from "./mocks/mock_featured";
     let mediaformats = [];
     onMount(async () => {
         try {
@@ -21,9 +20,6 @@
             console.error(error);
         }
 	});
-    featured.results.map((result) => {
-        return result.media_formats;
-    })
     const onSearchbarSubmit = async (search: string) => { 
         try {
             const searchParams = new URLSearchParams({
