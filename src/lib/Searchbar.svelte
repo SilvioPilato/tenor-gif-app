@@ -28,19 +28,24 @@
                 hover:outline-pink-400
                 group-focus:outline-pink-400
                 group-hover:outline-pink-400
-
-                dark:outline-fuchsia-600
+                dark:bg-gradient-to-r
+                dark:animate-gradient
+                dark:bg-[length:400%_400%]
+                from-indigo-900 via-pink-900 to-violet-900
+                dark:text-white
+                dark:placeholder-white::placeholder
+                dark:bg
                 dark:outline-fuchsia-600
                 dark:focus:outline-fuchsia-600
                 dark:hover:outline-fuchsia-600
                 dark:group-focus:outline-fuchsia-600
-                dark:group-hover:outline-fuchsia-600
                 shadow-inner
             "
             name="gif-search" id="gif-search" bind:value={search} />
             <button class="
                 outline
-                outline-3 
+                outline-4
+                outline-offset-[-1px]
                 w-1/12
                 flex-grow 
                 rounded-tr-full 
@@ -48,6 +53,7 @@
                 flex
                 justify-center
                 items-center
+
                 bg-pink-300
                 outline-pink-300
                 focus:bg-pink-400
@@ -58,8 +64,9 @@
                 peer-focus:bg-pink-400
                 peer-hover:outline-pink-400
                 peer-hover:bg-pink-400
-                
+
                 dark:bg-fuchsia-600
+                dark:outline-fuchsia-600
                 dark:focus:bg-fuchsia-600
                 dark:hover:bg-fuchsia-600
                 dark:focus:outline-fuchsia-600
