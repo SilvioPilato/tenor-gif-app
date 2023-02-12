@@ -21,20 +21,26 @@
                 outline
                 outline-2
                 flex-grow-12
-                outline-pink-200
                 peer
-                focus:outline-pink-300
-                hover:outline-pink-300
-                group-focus:outline-pink-300
-                group-hover:outline-pink-300
+
+                outline-pink-300
+                focus:outline-pink-400
+                hover:outline-pink-400
+                group-focus:outline-pink-400
+                group-hover:outline-pink-400
+
+                dark:outline-fuchsia-600
+                dark:outline-fuchsia-600
+                dark:focus:outline-fuchsia-600
+                dark:hover:outline-fuchsia-600
+                dark:group-focus:outline-fuchsia-600
+                dark:group-hover:outline-fuchsia-600
                 shadow-inner
             "
             name="gif-search" id="gif-search" bind:value={search} />
             <button class="
-                bg-pink-200
                 outline
-                outline-2 
-                outline-pink-200 
+                outline-3 
                 w-1/12
                 flex-grow 
                 rounded-tr-full 
@@ -42,14 +48,26 @@
                 flex
                 justify-center
                 items-center
-                focus:outline-pink-300
-                hover:outline-pink-300
-                focus:bg-pink-300
-                hover:bg-pink-300
-                peer-focus:outline-pink-300
-                peer-focus:bg-pink-300
-                peer-hover:outline-pink-300
-                peer-hover:bg-pink-300
+                bg-pink-300
+                outline-pink-300
+                focus:bg-pink-400
+                hover:bg-pink-400
+                focus:outline-pink-400
+                hover:outline-pink-400
+                peer-focus:outline-pink-400
+                peer-focus:bg-pink-400
+                peer-hover:outline-pink-400
+                peer-hover:bg-pink-400
+                
+                dark:bg-fuchsia-600
+                dark:focus:bg-fuchsia-600
+                dark:hover:bg-fuchsia-600
+                dark:focus:outline-fuchsia-600
+                dark:hover:outline-fuchsia-600
+                dark:peer-focus:outline-fuchsia-600
+                dark:peer-focus:bg-fuchsia-600
+                dark:peer-hover:outline-fuchsia-600
+                dark:peer-hover:bg-fuchsia-600
             " 
             type="submit"
             ><Fa color={"#fafafa"} scale={1.5} icon={faSearch} /></button>
