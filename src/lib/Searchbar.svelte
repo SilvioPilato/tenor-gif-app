@@ -22,10 +22,12 @@
                 outline-2
                 flex-grow-12
                 outline-pink-200
+                peer
                 focus:outline-pink-300
                 hover:outline-pink-300
+                group-focus:outline-pink-300
                 group-hover:outline-pink-300
-                
+                shadow-inner
             "
             name="gif-search" id="gif-search" bind:value={search} />
             <button class="
@@ -40,9 +42,15 @@
                 flex
                 justify-center
                 items-center
-                group-hover:outline-pink-300
-                group-hover:bg-pink-300
-                " 
+                focus:outline-pink-300
+                hover:outline-pink-300
+                focus:bg-pink-300
+                hover:bg-pink-300
+                peer-focus:outline-pink-300
+                peer-focus:bg-pink-300
+                peer-hover:outline-pink-300
+                peer-hover:bg-pink-300
+            " 
             type="submit"
             ><Fa color={"#fafafa"} scale={1.5} icon={faSearch} /></button>
     </form>
