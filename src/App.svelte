@@ -5,6 +5,7 @@
     import type { TenorAPI, TenorResponse } from "./lib/types";
     import resolveConfig from 'tailwindcss/resolveConfig'
     import tailwindConfig from '../tailwind.config.cjs'
+  import ThemeSwitcher from "./lib/ThemeSwitcher.svelte";
     const fullConfig = resolveConfig(tailwindConfig)
     let currentSearch = "";
     let mediaformats = [];
@@ -67,8 +68,9 @@
     }
 </script>
 
-<main>
+<main class="dark dark:bg-slate-900">
     <div class="flex flex-col items-center">
+        <ThemeSwitcher />
         <div class="w-fit">
             <Searchbar onSearchbarSubmit={onSearchbarSubmit}/>
             <GifGrid columns={columns} onIntersection={onIntersection} mediaFormats={mediaformats}/>
