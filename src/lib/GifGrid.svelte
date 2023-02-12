@@ -40,9 +40,9 @@
 </script>
 
 <div>
-    <div class="flex" >
+    <div class="flex gap-4" >
         {#each getColContent(columns, mediaFormats) as column}
-            <div class="flex flex-col ml-4 gap-4">
+            <div class="flex flex-col gap-4">
                 {#each column as content}
                     <figure class="w-full relative">
                         <img src={content.tinygif.url} alt="" />
