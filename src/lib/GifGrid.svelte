@@ -44,8 +44,8 @@
         {#each getColContent(columns, mediaFormats) as column}
             <div class="flex flex-col gap-4">
                 {#each column as content}
-                    <figure class="w-full relative">
-                        <img src={content.tinygif.url} alt="" />
+                    <figure class="w-full relative rounded-md">
+                        <img src={content.tinygif.url} alt="" class="rounded-md"/>
                         <figcaption class="absolute top-1 left-1">
                             <button on:click|preventDefault={() => onImageClick(content.gif.url)}>
                                 <Fa icon={faWhatsapp} />

@@ -68,10 +68,15 @@
     }
 </script>
 
-<main class="dark dark:bg-slate-900">
+<main class="bg-sky-50 dark:bg-slate-900">
     <div class="flex flex-col items-center">
-        <ThemeSwitcher />
         <div class="w-fit">
+            <div class="flex justify-between w-full">
+                <h1 class="text-3xl font-semibold">GIF APP</h1>
+                <span>
+                    <ThemeSwitcher />
+                </span>
+            </div>
             <Searchbar onSearchbarSubmit={onSearchbarSubmit}/>
             <GifGrid columns={columns} onIntersection={onIntersection} mediaFormats={mediaformats}/>
         </div>
