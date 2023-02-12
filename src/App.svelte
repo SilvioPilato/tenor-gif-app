@@ -1,12 +1,27 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import { API_LIMIT, GET_REQUEST_OPTIONS, TENOR_API_SEARCH, API_KEY, TENOR_API_FEATURED } from "./config";
     import GifGrid from "./lib/GifGrid.svelte";
     import Searchbar from "./lib/Searchbar.svelte";
     import type { TenorAPI, TenorResponse } from "./lib/types";
+    import resolveConfig from 'tailwindcss/resolveConfig'
+    import tailwindConfig from '../tailwind.config.cjs'
+    const fullConfig = resolveConfig(tailwindConfig)
     let currentSearch = "";
     let mediaformats = [];
     let nextId = "";
+    const calculateColumns = (): number => {
+        if (lgQuery.matches) return 4;
+        if (mdQuery.matches) return 3;
+        return 2;
+    }
+    const smQuery = window.matchMedia(`(mix-width: ${fullConfig.theme.screens["sm"]})`);
+    const mdQuery = window.matchMedia(`(min-width: ${fullConfig.theme.screens["md"]})`);
+    const lgQuery = window.matchMedia(`(min-width: ${fullConfig.theme.screens["lg"]})`);
+    smQuery.addEventListener("change", () => columns = calculateColumns());
+    mdQuery.addEventListener("change", () => columns = calculateColumns());
+    lgQuery.addEventListener("change", () => columns = calculateColumns());
+
+    let columns = calculateColumns();
     const searchGifs = async (api: TenorAPI, searchParams: URLSearchParams) => {
         const response = await fetch(`${api}?${searchParams}`, GET_REQUEST_OPTIONS);
         const result: TenorResponse = await response.json();
@@ -56,7 +71,7 @@
     <div class="flex flex-col items-center">
         <div class="w-fit">
             <Searchbar onSearchbarSubmit={onSearchbarSubmit}/>
-            <GifGrid onIntersection={onIntersection} mediaFormats={mediaformats}/>
+            <GifGrid columns={columns} onIntersection={onIntersection} mediaFormats={mediaformats}/>
         </div>
     </div>
 </main>
