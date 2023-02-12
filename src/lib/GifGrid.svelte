@@ -44,16 +44,28 @@
         {#each getColContent(columns, mediaFormats) as column}
             <div class="flex flex-col gap-4">
                 {#each column as content}
-                    <figure class="w-full relative rounded-md">
+                    <figure class="group w-full relative rounded-md">
                         <img src={content.tinygif.url} alt="" class="rounded-md"/>
-                        <figcaption class="absolute top-1 left-1">
-                            <button on:click|preventDefault={() => onImageClick(content.gif.url)}>
-                                <Fa icon={faWhatsapp} />
-                            </button>
-                            <button on:click|preventDefault={() => onCopyClick(content.gif.url)}>
-                                <Fa icon={faLink} />
-                            </button>
-                        </figcaption>
+                        <div 
+                            class="
+                                bg-gradient-to-r 
+                                from-purple-500 via-green-500 to-red-500 
+                                opacity-25 
+                                w-full 
+                                h-full 
+                                hidden 
+                                absolute 
+                                top-0 
+                                left-0
+                                rounded-md 
+                                group-hover:block" 
+                        />
+                        <button class="bottom-4 left-4 absolute hidden group-hover:block" on:click|preventDefault={() => onImageClick(content.gif.url)}>
+                            <Fa scale={1.5} color={"#fafafa"} icon={faWhatsapp} />
+                        </button>
+                        <button class="bottom-4 right-4 absolute hidden group-hover:block" on:click|preventDefault={() => onCopyClick(content.gif.url)}>
+                            <Fa scale={1.5} color={"#fafafa"} icon={faLink} />
+                        </button>
                     </figure>
                 {/each}
             </div>
