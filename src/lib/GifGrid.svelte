@@ -44,13 +44,13 @@
         {#each getColContent(columns, mediaFormats) as column}
             <div class="flex flex-col gap-4">
                 {#each column as content}
-                    <figure class="group w-full relative rounded-md">
+                    <figure class="animate-grow origin-top group w-full relative rounded-md">
                         <img src={content.tinygif.url} alt="" class="rounded-md"/>
                         <div 
                             class="
                                 bg-gradient-to-r 
                                 from-purple-500 via-green-500 to-red-500 
-                                opacity-25 
+                                opacity-30 
                                 w-full 
                                 h-full 
                                 hidden 
@@ -60,10 +60,10 @@
                                 rounded-md 
                                 group-hover:block" 
                         />
-                        <button class="bottom-4 left-4 absolute hidden group-hover:block" on:click|preventDefault={() => onImageClick(content.gif.url)}>
+                        <button class="top-4 left-4 absolute hidden group-hover:block" on:click|preventDefault={() => onImageClick(content.gif.url)}>
                             <Fa scale={1.5} color={"#fafafa"} icon={faWhatsapp} />
                         </button>
-                        <button class="bottom-4 right-4 absolute hidden group-hover:block" on:click|preventDefault={() => onCopyClick(content.gif.url)}>
+                        <button class="top-4 right-4 absolute hidden group-hover:block" on:click|preventDefault={() => onCopyClick(content.gif.url)}>
                             <Fa scale={1.5} color={"#fafafa"} icon={faLink} />
                         </button>
                     </figure>

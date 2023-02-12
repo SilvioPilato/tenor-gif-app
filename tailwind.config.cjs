@@ -3,7 +3,17 @@ export default {
   darkMode: "class",
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        grow: 'grow 0.3s ease-in-out forwards',
+      },
+      keyframes: {
+        grow: {
+          '0%': { transform: 'scaleY(0)' },
+          '100%': { transform: 'scaleY(1)' },
+        }
+      }
+    },
   },
   plugins: [],
 }
