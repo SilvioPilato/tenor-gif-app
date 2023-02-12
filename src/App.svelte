@@ -45,7 +45,6 @@
                 return res.media_formats;
             });
             mediaformats = [...mediaformats, ...gifs];
-            console.log(mediaformats);
             nextId = response.next;
         } catch (error) {
             console.error(error);
