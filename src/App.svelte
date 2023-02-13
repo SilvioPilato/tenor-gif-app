@@ -1,15 +1,18 @@
 <script lang="ts">
-    import { API_LIMIT, GET_REQUEST_OPTIONS, TENOR_API_SEARCH, API_KEY, TENOR_API_FEATURED } from "./config";
+    import { API_LIMIT, GET_REQUEST_OPTIONS, TENOR_API_SEARCH, API_KEY, TENOR_API_FEATURED, TENOR_LOCALE, TENOR_API_CATEGORIES } from "./config";
     import GifGrid from "./lib/GifGrid.svelte";
     import Searchbar from "./lib/Searchbar.svelte";
-    import type { TenorAPI, TenorResponse } from "./lib/types";
+    import type { TenorAPI, TenorCategoryResponse, TenorResponse } from "./lib/types";
     import resolveConfig from 'tailwindcss/resolveConfig'
     import tailwindConfig from '../tailwind.config.cjs'
-  import ThemeSwitcher from "./lib/ThemeSwitcher.svelte";
+    import ThemeSwitcher from "./lib/ThemeSwitcher.svelte";
+    import { onMount } from "svelte";
+    import Trending from "./lib/Trending.svelte";
     const fullConfig = resolveConfig(tailwindConfig)
     let currentSearch = "";
     let mediaformats = [];
     let nextId = "";
+    let categories = [];
     const calculateColumns = (): number => {
         if (lgQuery.matches) return 4;
         if (mdQuery.matches) return 3;
@@ -28,6 +31,11 @@
         const result: TenorResponse = await response.json();
         return result;
     }
+    const fetchCategories = async(searchParams: URLSearchParams) => {
+        const response = await fetch(`${TENOR_API_CATEGORIES}?${searchParams}`, GET_REQUEST_OPTIONS);
+        const result: TenorCategoryResponse = await response.json();
+        return result;
+    }
     const onSearchbarSubmit = async (search: string) => { 
         try {
             currentSearch = search;
@@ -35,6 +43,7 @@
                 key: API_KEY,
                 limit: API_LIMIT.toString(),
                 q: search,
+                locale: TENOR_LOCALE
             }
             const urlParams = new URLSearchParams(params);
             const response = await searchGifs(TENOR_API_SEARCH, urlParams);
@@ -51,6 +60,7 @@
             const params = {
                 key: API_KEY,
                 limit: API_LIMIT.toString(),
+                locale: TENOR_LOCALE,
                 ...(nextId) && {pos: nextId},
                 ...(currentSearch) && {q: currentSearch}
             }
@@ -66,6 +76,16 @@
             console.error(error);
         }
     }
+
+    onMount(async () => {
+        const params = {
+                key: API_KEY,
+                locale: TENOR_LOCALE,
+                type: 'trending'
+            };
+        let response = await fetchCategories(new URLSearchParams(params));
+        categories = response.tags;
+    });
 </script>
 
 <main class="bg-sky-50 dark:bg-slate-900">
@@ -78,6 +98,7 @@
                 </span>
             </div>
             <Searchbar onSearchbarSubmit={onSearchbarSubmit}/>
+            <Trending categories={categories}/>
             <GifGrid columns={columns} onIntersection={onIntersection} mediaFormats={mediaformats}/>
         </div>
     </div>

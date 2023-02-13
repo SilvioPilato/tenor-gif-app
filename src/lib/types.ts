@@ -1,4 +1,4 @@
-import type { TENOR_API_FEATURED, TENOR_API_SEARCH } from "../config";
+import type { TENOR_API_CATEGORIES, TENOR_API_FEATURED, TENOR_API_SEARCH } from "../config";
 
 export type TenorResponse = {
     locale: string,
@@ -47,6 +47,18 @@ export type TenorMediaFormat = {
     }
 }
 
+export type TenorCategory = {
+    searchTerm: string,
+    name: string,
+    image: string,
+}
+
+export type TenorCategoryResponse = {
+    locale: string,
+    tags: TenorCategory[],
+}
+
 export type TenorAPI = 
     typeof TENOR_API_FEATURED
-    | typeof TENOR_API_SEARCH;
+    | typeof TENOR_API_SEARCH
+    | typeof TENOR_API_CATEGORIES;
