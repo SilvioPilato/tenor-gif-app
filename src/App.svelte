@@ -71,7 +71,7 @@
 <main class="bg-sky-50 dark:bg-slate-900">
     <div class="flex flex-col items-center">
         <div class="w-fit flex flex-col gap-4 text-pink-400 dark:text-fuchsia-600">
-            <div class="flex justify-between w-full">
+            <div class="flex justify-between w-full mt-4">
                 <h1 class="text-3xl font-semibold">GIF APP</h1>
                 <span>
                     <ThemeSwitcher />

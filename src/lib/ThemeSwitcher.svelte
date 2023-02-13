@@ -11,32 +11,36 @@
 </script>
 
 
-<label class="relative inline-flex items-center cursor-pointer">
+<label class="relative flex items-center cursor-pointer">
     <input type="checkbox" value={isDarkMode} class="sr-only peer" on:change={onSwitch}>
     <div 
-        class="w-11 
-            h-6 
-            bg-gray-200 
-            peer-focus:outline-none 
-            peer-focus:ring-2 
-            peer-focus:ring-blue-300 
-            dark:peer-focus:ring-blue-800 
+        class="w-14 
+            h-2 
+            bg-pink-200 
             rounded-full 
             peer 
-            dark:bg-gray-700 
-            peer-checked:after:translate-x-full 
-            peer-checked:after:border-white 
             after:content-[''] 
-            after:absolute after:top-[2px] 
-            after:left-[2px] 
+            after:absolute after:top-[-5px] 
+            after:left-[-2px] 
             after:bg-white
             after:border-gray-300 
             after:border 
             after:rounded-full 
             after:h-5 
             after:w-5 
-            after:transition-all 
+            after:transition-all
+
+            dark:bg-gray-700 
             dark:border-gray-600 
-            peer-checked:bg-blue-600"
+
+
+            peer-checked:bg-blue-600
+            peer-focus:outline-none 
+            peer-focus:ring-2 
+            peer-focus:ring-blue-300 
+            peer-checked:after:translate-x-[200%] 
+            peer-checked:after:border-white 
+            dark:peer-focus:ring-blue-800 
+            "
         ></div>
 </label>
