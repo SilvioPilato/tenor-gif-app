@@ -22,7 +22,7 @@
                 outline-2
                 flex-grow-12
                 peer
-
+                
                 outline-pink-300
                 focus:outline-pink-400
                 hover:outline-pink-400
