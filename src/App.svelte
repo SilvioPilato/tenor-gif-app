@@ -97,8 +97,8 @@
                     <ThemeSwitcher />
                 </span>
             </div>
-            <Searchbar onSearchbarSubmit={onSearchbarSubmit}/>
-            <Trending categories={categories}/>
+            <Searchbar search={currentSearch} onSearchbarSubmit={onSearchbarSubmit}/>
+            <Trending categories={categories} onCategoryClick={onSearchbarSubmit} />
             <GifGrid columns={columns} onIntersection={onIntersection} mediaFormats={mediaformats}/>
         </div>
     </div>

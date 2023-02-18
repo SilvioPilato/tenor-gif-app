@@ -48,7 +48,7 @@ export type TenorMediaFormat = {
 }
 
 export type TenorCategory = {
-    searchTerm: string,
+    searchterm: string,
     name: string,
     image: string,
 }

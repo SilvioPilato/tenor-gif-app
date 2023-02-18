@@ -5,10 +5,10 @@
     let onFormSubmit = () => {
         onSearchbarSubmit(search);
     }
-    let search ="";
+    export let search ="";
 </script>
 
-<div class="flex w-full">
+<div class="flex w-full xl:w-3/4 justify-center items-center mx-auto">
     <form class="group flex w-full" on:submit|preventDefault={onFormSubmit}>
         <input autocomplete="off" placeholder="Search all the GIFs" type="text" class="
                 h-12 

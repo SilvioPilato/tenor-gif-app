@@ -39,7 +39,7 @@
     
 </script>
 
-<div class="flex justify-center">
+<div class="flex flex-col items-center justify-center">
     <div class="flex gap-4" >
         {#each getColContent(columns, mediaFormats) as column}
             <div class="flex flex-col gap-4">
