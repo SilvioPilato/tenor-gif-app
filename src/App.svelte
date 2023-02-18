@@ -3,11 +3,11 @@
     import GifGrid from "./lib/GifGrid.svelte";
     import Searchbar from "./lib/Searchbar.svelte";
     import type { TenorAPI, TenorCategoryResponse, TenorResponse } from "./lib/types";
-    import resolveConfig from 'tailwindcss/resolveConfig'
-    import tailwindConfig from '../tailwind.config.cjs'
     import ThemeSwitcher from "./lib/ThemeSwitcher.svelte";
     import { onMount } from "svelte";
     import Trending from "./lib/Trending.svelte";
+    import resolveConfig from 'tailwindcss/resolveConfig'
+    import tailwindConfig from '../tailwind.config.cjs'
     const fullConfig = resolveConfig(tailwindConfig)
     let currentSearch = "";
     let mediaformats = [];
@@ -90,8 +90,8 @@
 
 <main class="bg-sky-50 dark:bg-slate-900">
     <div class="container mx-auto">
-        <div class="flex flex-col gap-4 justify-center text-pink-400 dark:text-fuchsia-600">
-            <div class="flex justify-between w-full mt-4">
+        <div class="flex flex-col gap-4 justify-center items-center text-pink-400 dark:text-fuchsia-600">
+            <div class="flex justify-between w-full xl:w-3/4 pt-4 pl-2 pr-2">
                 <h1 class="text-3xl font-semibold">GIF APP</h1>
                 <span>
                     <ThemeSwitcher />
