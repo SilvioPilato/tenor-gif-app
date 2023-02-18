@@ -25,10 +25,10 @@
         element.scrollIntoView(scrollBehaviour);
     }
 </script>
-<div class="w-3/4 mx-auto relative">
+<div class="w-5/6 mx-auto relative">
     <h1 class="text-3xl font-semibold">TRENDING NOW</h1>
     {#if categoryCursor > 0}
-        <button class="absolute -left-8 top-8 bottom-0" on:click|preventDefault={onGoLeft}>
+        <button class="absolute -left-8 -top-4 bottom-0" on:click|preventDefault={onGoLeft}>
             <Fa 
                 on:click={onGoRight} 
                 scale={1.5} 
@@ -39,9 +39,9 @@
     <div class="flex gap-2 overflow-hidden touch-auto justify-start flex-nowrap">
         {#each categories as category}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div id={category.name} class="h-32 shrink-0 basis-1/5 grow bg-center bg-cover cursor-pointer" >
+            <div id={category.name} class="h-48 shrink-0 basis-1/3 grow  cursor-pointer bg-no-repeat" >
                 <div
-                    class="h-24"
+                    class="h-32 bg-no-repeat bg-center bg-cover"
                     style={`background-image: url(${category.image})`} 
                     on:click={() => onCategoryClick(category.searchterm)} 
                 />
@@ -50,7 +50,7 @@
         {/each}
     </div>
     {#if categoryCursor < maxCategories}
-        <button class="absolute -right-8 top-8 bottom-0" on:click|preventDefault={onGoRight}>
+        <button class="absolute -right-8 -top-4 bottom-0" on:click|preventDefault={onGoRight}>
             <Fa 
                 on:click={onGoRight} 
                 scale={1.5} 

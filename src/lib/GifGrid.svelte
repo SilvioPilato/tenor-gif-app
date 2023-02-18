@@ -7,7 +7,7 @@
     import { WA_API_SEND } from "../config";
     export let mediaFormats: TenorMediaFormat[] = [];
     export let onIntersection: () => void;
-    export let columns = 2;
+    export let columns = 1;
     let container: Element;
     const intersected = (entries) => {;
         entries.forEach((entry) => {
@@ -44,8 +44,8 @@
         {#each getColContent(columns, mediaFormats) as column}
             <div class="flex flex-col gap-4">
                 {#each column as content}
-                    <figure class="animate-grow origin-top group w-full relative rounded-md">
-                        <img src={content.tinygif.url} alt="" class="rounded-md"/>
+                    <figure class="animate-grow origin-top group w-full flex justify-center relative rounded-md">
+                        <img src={content.mediumgif.url} alt="" class="rounded-md"/>
                         <div 
                             class="
                                 bg-gradient-to-r 
@@ -69,7 +69,6 @@
                     </figure>
                 {/each}
             </div>
-           
         {/each}
     </div>
     <div bind:this={container} />

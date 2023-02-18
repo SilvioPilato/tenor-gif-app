@@ -14,9 +14,9 @@
     let nextId = "";
     let categories = [];
     const calculateColumns = (): number => {
-        if (lgQuery.matches) return 5;
-        if (mdQuery.matches) return 4;
-        return 2;
+        if (lgQuery.matches) return 4;
+        if (mdQuery.matches) return 3;
+        return 1;
     }
     const smQuery = window.matchMedia(`(mix-width: ${fullConfig.theme.screens["sm"]})`);
     const mdQuery = window.matchMedia(`(min-width: ${fullConfig.theme.screens["md"]})`);
