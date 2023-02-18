@@ -8,7 +8,7 @@
     export let search ="";
 </script>
 
-<div class="flex w-full xl:w-3/4 justify-center items-center mx-auto">
+<div class="flex w-full xl:w-3/4 justify-center items-center mx-auto pl-2 pr-2">
     <form class="group flex w-full" on:submit|preventDefault={onFormSubmit}>
         <input autocomplete="off" placeholder="Search all the GIFs" type="text" class="
                 h-12 
@@ -77,6 +77,8 @@
                 dark:peer-hover:bg-fuchsia-600
             " 
             type="submit"
-            ><Fa color={"#fafafa"} scale={1.5} icon={faSearch} /></button>
+            >   
+                <Fa color={"#fafafa"} scale={1.5} icon={faSearch} />
+        </button>
     </form>
 </div>

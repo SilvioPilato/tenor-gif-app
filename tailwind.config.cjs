@@ -6,12 +6,17 @@ export default {
     extend: {
       animation: {
         grow: 'grow 0.3s ease-in-out forwards',
+        enlarge: 'enlarge 0.5s ease-in-out both',
         gradient: 'gradient 15s ease infinite'
       },
       keyframes: {
         grow: {
           '0%': { transform: 'scaleY(0)' },
           '100%': { transform: 'scaleY(1)' },
+        },
+        enlarge: {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.2)' },
         },
         gradient: {
           '0%': {
